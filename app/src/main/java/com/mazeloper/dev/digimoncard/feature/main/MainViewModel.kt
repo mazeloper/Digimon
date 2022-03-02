@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mazeloper.dev.digimoncard.data.repository.remote.DigimonCardRepository
 import com.mazeloper.dev.digimoncard.data.vo.DigimonVo
+import com.mazeloper.dev.digimoncard.util.JsLog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainViewModel(private val repository: DigimonCardRepository) : ViewModel() {
@@ -15,6 +16,7 @@ class MainViewModel(private val repository: DigimonCardRepository) : ViewModel()
     val digimonCard: LiveData<List<DigimonVo>>
         get() = _digimonCard
 
+
     fun fetchDigimonCard() {
         val disposable = repository.fetchDigimonCardList()
             .subscribe({
@@ -23,6 +25,11 @@ class MainViewModel(private val repository: DigimonCardRepository) : ViewModel()
 
             })
         compositeDisposable.add(disposable)
+    }
+
+    fun insertAllDigimonCard(data: List<DigimonVo>) {
+        JsLog.debug("#### insertAllDigimonCard")
+        repository.insertAllCardList(data)
     }
 
     override fun onCleared() {

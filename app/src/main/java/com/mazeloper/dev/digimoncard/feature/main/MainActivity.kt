@@ -3,6 +3,7 @@ package com.mazeloper.dev.digimoncard.feature.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mazeloper.dev.digimoncard.databinding.ActivityMainBinding
+import com.mazeloper.dev.digimoncard.util.JsLog
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObserver() {
         viewModel.digimonCard.observe(this) { vo ->
-
+            if (vo.isNotEmpty()) {
+                JsLog.debug("###$#^%!@#$%^&$#@#$%&*^")
+                viewModel.insertAllDigimonCard(vo)
+            }
         }
     }
 }

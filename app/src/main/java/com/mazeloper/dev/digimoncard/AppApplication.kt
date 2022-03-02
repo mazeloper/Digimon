@@ -1,6 +1,7 @@
 package com.mazeloper.dev.digimoncard
 
 import android.app.Application
+import com.mazeloper.dev.digimoncard.di.DatabaseModule
 import com.mazeloper.dev.digimoncard.di.NetworkModule
 import com.mazeloper.dev.digimoncard.di.RepositoryModule
 import com.mazeloper.dev.digimoncard.di.ViewModelModule
@@ -18,9 +19,10 @@ class AppApplication : Application(), KoinComponent {
             androidLogger()
             androidContext(this@AppApplication)
             modules(
-                NetworkModule,
+                ViewModelModule,
                 RepositoryModule,
-                ViewModelModule
+                DatabaseModule,
+                NetworkModule
             )
         }
     }

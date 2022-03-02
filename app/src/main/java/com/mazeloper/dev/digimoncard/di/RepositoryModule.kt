@@ -4,5 +4,5 @@ import com.mazeloper.dev.digimoncard.data.repository.remote.DigimonCardRepositor
 import org.koin.dsl.module
 
 val RepositoryModule = module {
-    single { DigimonCardRepository(get()) }
+    single { DigimonCardRepository(get(), get()) }
 }
